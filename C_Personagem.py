@@ -5,14 +5,14 @@ import pickle
 
 # ------------------------------------------ ATRIBUTOS /// 
 
-Pontos = 15
+Pontos = 12
  
 Vigor = 0 
 Reflexo = 0 
 Percepcao = 0 
 Vontade = 0 
 Vitalidade = 0
-Zanites = 0 
+Zanites = 400 
 Nome = ""
 
 # ------------------------------------------ RAÇAS ///
@@ -102,13 +102,13 @@ while Pontos > 0:
         Nome = Escrever_nome
         Escolher_Nome = True
 
-    print("Você tem 15 pontos!\n")
+    print("Você tem 12 pontos!\n")
 
     Vigor =  Vigor + int(input("Adicione pontos de atributo ao Vigor!"))
     Pontos -=   Vigor
     if Pontos <= 0:
         break
-    if Vigor > 18: 
+    if Vigor > 7: 
         print("Numero de pontos excedido, porfavor, tente novamente!")
         break
 
@@ -120,7 +120,7 @@ while Pontos > 0:
     Pontos -= Reflexo
     if Pontos <= 0:
         break
-    if Reflexo > 18: 
+    if Reflexo > 7: 
         print("Numero de pontos excedido, porfavor, tente novamente!")
         break
     
@@ -130,7 +130,7 @@ while Pontos > 0:
     Pontos -= Percepcao
     if Pontos <= 0:
         break
-    if Percepcao > 18: 
+    if Percepcao > 7: 
         print("Numero de pontos excedido, porfavor, tente novamente!")
         break
 
@@ -140,41 +140,55 @@ while Pontos > 0:
     Pontos -= Vontade
     if Pontos <= 0:
         break
-    if Vontade > 18: 
+    if Vontade > 7: 
         print("Numero de pontos excedido, porfavor, tente novamente!")
         break
 
     if Pontos > 1: 
         print("Voce nao gastou todos os seus ponto, tente denovo, por favor")
         break
+
+while Raca == False:
+
+    Escolher_Raca = input("Porfavor Escolha sua classe :\nAndroide\nGorf\nHumano\nPisonico\nZark").upper()
+    print(str(Escolher_Raca))
+
+    if Escolher_Raca == "ANDROIDE":
+        Raca == True
+        Androide()
+        break     
+
+    if Escolher_Raca == "GORF":
+        Raca == True
+        Gorf()
+        break
+
+    if Escolher_Raca == "HUMANO":
+        Raca == True
+        Humano()
+        break
+
+    if Escolher_Raca == "PISONICO":
+        Raca == True
+        Pisonico()
+        break
+
+    if Escolher_Raca == "ZARK":
+        Raca == True
+        Zark()
+        break
+
+    if Escolher_Raca == "AMONGUS":
+        print("Eu achei que alguem podia tentar isso, então sim, você achou um easter egg")
+        print("Mas infelizmente ele não acrescenta nada pro jogo, é so uma menssagem minha pra você mesmo")
+        print("Eu acho que o maior concorrente a fazer isso é o lucairo, mas não duvido de ninguem")
     
-    if Raca == False:
+    else:
+        print("Nome de raça incoreto, porfavor insira sua raça denovo\n")
 
-        Escolher_Raca = input("Porfavor Escolha sua classe :\nAndroide\nGorf\nHumano\nPisonico\nZark").upper()
-        print(str(Escolher_Raca))
 
-        if Escolher_Raca == "ANDROIDE":
-            Raca == True
-            Androide()
-        
-        if Escolher_Raca == "GORF":
-            Raca == True
-            Gorf()
 
-        if Escolher_Raca == "HUMANO":
-            Raca == True
-            Humano()
-
-        if Escolher_Raca == "PISONICO":
-            Raca == True
-            Pisonico()
-
-        if Escolher_Raca == "ZARK":
-            Raca == True
-            Zark()
-
-        if Raca == True:
-            break
+# ------------------------------------------ Salvando Arquivos de cada jogador ///
 
 # Lista com todos os atributos dos personagens
 Atributos = [Nome,Raca_c,Vigor,Vontade,Vitalidade,Percepcao,Reflexo,Zanites]
