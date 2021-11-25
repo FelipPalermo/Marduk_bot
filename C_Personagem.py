@@ -197,7 +197,7 @@ Atributos = [Nome,Raca_c,Vigor,Vontade,Vitalidade,Percepcao,Reflexo,Zanites]
 Save_Personagem = open(f"Personagens/{Nome}.pickle", 'wb')
 
 # Funcao da biblioteca pickle para salvar os arquivos " dump "
-pickle.dump(Atributos, Save_Personagem )
+pickle.dump(Atributos, Save_Personagem)
 
 # Fechar o arquivo para que ele seja salvo e nao receba alteracoes indesejadas 
 Save_Personagem.close()
