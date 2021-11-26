@@ -11,7 +11,6 @@ def Criar_Inventario():
     Sender_ID = "Jorge"
     # Abre e fecha o arquivo do jeito "pytonico"
     with open(f"Inventario/{Nome}.pickle", "wb") as Inv:
-        
         Inventario.append(Sender_ID)
         pickle.dump(Inventario, Inv)
 
@@ -28,25 +27,38 @@ def Mostrar_Inventario():
     Abrir_Inv = open(f"Inventario/{Nome}.pickle", "rb")
     Ler_Inv = pickle.load(Abrir_Inv)
 
+
+    # Variavel contador que vai indicar a posicao de cada item
+    # Inv_Pos = Posição no inventario
+    Inv_Pos = 0
+
+
+    # Guarda o tamanho do inventario como int para compararmos depois
+    Inv_len = len(Ler_Inv)
+
+
     # Passa por cada item do inventario retornando cada iteravel como o comando que demos
     for item in Ler_Inv:
         
-        # Variavel contador que vai indicar a posicao de cada item
-        # Pos = Posição
-        Pos = 0
-        
-        print(f"{Pos}  :  {item}")
-        
         # Adiciona 1 no nosso contador para que tenha sempe o mesmo numero da lista
-        Pos += 1 
+        Inv_Pos += 1 
+
+        # Mostra a posição no iventario e o item, excluindo o ID do jogador
+        print(f"{Inv_Pos}  :  {Ler_Inv[Inv_Pos]}")
+
+
+
+        if Inv_Pos >= Inv_len - 1 :
+            break
+
+        
+
 
 
 def Autualizar_inventario():
 
     # Booleano para quebrar o looping quando quisermos sair
     Sair = False
-
-    
 
     # Variavel que vai receber nome para comparação
     Nome = input("Qual inventario você deseja atualizar?")
@@ -65,35 +77,40 @@ def Autualizar_inventario():
 
     # Se o sender ID for o mesmo que o primeiro parametro " QUE NO CASO SERA O ID"
     # if vai ser ativado, nos botando em um looping onde adicionaremos os itens
-    if Sender_ID == Ler_Inv[0] : # or Sender_ID == "350364616657862679"  < -- Codigo para reconhecer o meu discord
+    if Ler_Inv[0] == Sender_ID : # or Sender_ID == "350364616657862679"  < -- Codigo para reconhecer o meu discord
         
+        Abrir_Inv.close
+
         while Sair == False:
             
             Input_Item = input("Escreva o nome do item")
             
             # Comando para sair do inventario
-            if Input_Item == "sair" or Input_Item == "Sair" or Input_Item == "SAIR":
+            if Input_Item == "sair" or Input_Item == "Sair" or Input_Item == "SAIR" or Input_Item == "sair do inventario" : 
                 break
+
+
             
 
-            # Se sair não for ativado começam as etapas de salvar os novos itens no inventario
-            else : 
+            # Sair do loop caso o player digite sair
+            else: 
 
                 # Adiciona o item digitado pelo usuario na lista " ITEM "
                 Item.append(Input_Item)
                 
                 # Mostra os parametros // serve apenas para configuração 
                 print("printando item = ", Item)
-                
-                Abrir_Para_Escrita = open(f"Inventario/{Nome}.pickle", 'wb')
-                pickle.dump(Item, Abrir_Para_Escrita)
-                Abrir_Para_Escrita.close()
-                
-                print("printando arquivo ", Ler_Inv)
 
+                with open(f"Inventario/{Nome}.pickle", "wb") as EF: 
+                    pickle.dump(Item, EF)
 
+                with open(f"Inventario/{Nome}.pickle", 'rb') as RF:
+                    Ler_INV1 = pickle.load(RF)
+                    print("Printando arquivo", Ler_INV1)
+                
     else:
         pass
 
 Criar_Inventario()
 Autualizar_inventario()
+Mostrar_Inventario()
