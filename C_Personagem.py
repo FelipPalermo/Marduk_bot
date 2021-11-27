@@ -6,16 +6,16 @@ import pickle
 # ------------------------------------------ ATRIBUTOS /// 
 
 Pontos = 12
- 
 Vigor = 0 
 Reflexo = 0 
 Percepcao = 0 
 Vontade = 0 
 Vitalidade = 0
 Zanites = 400 
-Nome = ""
+Nome = ''
 
 # ------------------------------------------ RAÇAS ///
+
 def Androide():
     global Pontos
     global  Vigor
@@ -90,114 +90,152 @@ def Zark():
 
 Raca = False
 Raca_c = ''
-Escolher_Nome = False 
-Nome = ''
+Loop_PT = False
+Pereicias_Teinadas = 0
+Atributos = []
 
 # ------------------------------------------ Loop Principal ///
 
-while Pontos > 0:
+def Criar_Personagem():
     
-    if Escolher_Nome == False: 
-        Escrever_nome = input("Qual vai ser o nome do seu personagem?")
-        Nome = Escrever_nome
-        Escolher_Nome = True
-
-    print("Você tem 12 pontos!\n")
-
-    Vigor =  Vigor + int(input("Adicione pontos de atributo ao Vigor!"))
-    Pontos -=   Vigor
-    if Pontos <= 0:
-        break
-    if Vigor > 7: 
-        print("Numero de pontos excedido, porfavor, tente novamente!")
-        break
+    global Pontos
+    Escolher_Nome = False
+    global Vigor
+    global Reflexo 
+    global Percepcao
+    global Vontade
+    global Vitalidade
+    global Atributos 
+    global Nome
+    Loop_criar_Personagem = False
 
 
-    # Mostrar os pontos de atributo restantes
-    print(f'\nVocê ainda tem {Pontos} Pontos!')
 
-    Reflexo = Reflexo + int(input("Adicione pontos de atributo ao Reflexo!"))
-    Pontos -= Reflexo
-    if Pontos <= 0:
-        break
-    if Reflexo > 7: 
-        print("Numero de pontos excedido, porfavor, tente novamente!")
-        break
+    while Loop_criar_Personagem == False:
+        
+            if Escolher_Nome == False: 
+                Escrever_nome = input("Qual vai ser o nome do seu personagem?")
+                Nome = Escrever_nome
+                Escolher_Nome = True
+
+            print(f'\nVocê ainda tem {Pontos} Pontos!')
+
+            Vigor =  Vigor + int(input("Adicione pontos de atributo ao Vigor!"))
+            Pontos -=   Vigor
+            if Pontos <= 0:
+                break
+            if Vigor >= 7: 
+                print("Numero de pontos excedido, porfavor, tente novamente!")
+                break
+
+
+            # Mostrar os pontos de atributo resstantes
+            print(f'\nVocê ainda tem {Pontos} Pontos!')
+
+            Reflexo = Reflexo + int(input("Adicione pontos de atributo ao Reflexo!"))
+            Pontos -= Reflexo
+            if Pontos <= 0:
+                break
+            if Reflexo >= 7: 
+                print("Numero de pontos excedido, porfavor, tente novamente!")
+                break
+            
+            print(f'\nVocê ainda tem {Pontos} Pontos!')
+
+            Percepcao = Percepcao + int(input("Adicione pontos de atributo a Percepcao!"))
+            Pontos -= Percepcao
+            if Pontos <= 0:
+                break
+            if Percepcao >= 7: 
+                print("Numero de pontos excedido, porfavor, tente novamente!")
+                break
+
+            print(f'\nVocê ainda tem {Pontos} Pontos!')
+
+            Vontade = Vontade + int(input("Adicione pontos de atributo a Vontade!"))
+            Pontos -= Vontade
+            if Pontos <= 0:
+                break
+            if Vontade >= 7: 
+                print("Numero de pontos excedido, porfavor, tente novamente!")
+                break
+            
+            Loop_criar_Personagem = True
+
+def Selecionar_Raca():
     
-    print(f'\nVocê ainda tem {Pontos} Pontos!')
+    while Raca == False:
 
-    Percepcao = Percepcao + int(input("Adicione pontos de atributo a Percepcao!"))
-    Pontos -= Percepcao
-    if Pontos <= 0:
-        break
-    if Percepcao > 7: 
-        print("Numero de pontos excedido, porfavor, tente novamente!")
-        break
+        Escolher_Raca = input("Porfavor Escolha sua classe :\nAndroide\nGorf\nHumano\nPisonico\nZark").upper()
+        print(str(Escolher_Raca))
 
-    print(f'\nVocê ainda tem {Pontos} Pontos!')
+        if Escolher_Raca == "ANDROIDE":
+            Raca == True
+            Androide()
+            break     
 
-    Vontade = Vontade + int(input("Adicione pontos de atributo a Vontade!"))
-    Pontos -= Vontade
-    if Pontos <= 0:
-        break
-    if Vontade > 7: 
-        print("Numero de pontos excedido, porfavor, tente novamente!")
-        break
+        if Escolher_Raca == "GORF":
+            Raca == True
+            Gorf()
+            break
 
-    if Pontos > 1: 
-        print("Voce nao gastou todos os seus ponto, tente denovo, por favor")
-        break
+        if Escolher_Raca == "HUMANO":
+            Raca == True
+            Humano()
+            break
 
-while Raca == False:
+        if Escolher_Raca == "PISONICO":
+            Raca == True
+            Pisonico()
+            break
 
-    Escolher_Raca = input("Porfavor Escolha sua classe :\nAndroide\nGorf\nHumano\nPisonico\nZark").upper()
-    print(str(Escolher_Raca))
+        if Escolher_Raca == "ZARK":
+            Raca == True
+            Zark()
+            break
 
-    if Escolher_Raca == "ANDROIDE":
-        Raca == True
-        Androide()
-        break     
-
-    if Escolher_Raca == "GORF":
-        Raca == True
-        Gorf()
-        break
-
-    if Escolher_Raca == "HUMANO":
-        Raca == True
-        Humano()
-        break
-
-    if Escolher_Raca == "PISONICO":
-        Raca == True
-        Pisonico()
-        break
-
-    if Escolher_Raca == "ZARK":
-        Raca == True
-        Zark()
-        break
-
-    if Escolher_Raca == "AMONGUS":
-        print("Eu achei que alguem podia tentar isso, então sim, você achou um easter egg")
-        print("Mas infelizmente ele não acrescenta nada pro jogo, é so uma menssagem minha pra você mesmo")
-        print("Eu acho que o maior concorrente a fazer isso é o lucairo, mas não duvido de ninguem")
-    
-    else:
-        print("Nome de raça incoreto, porfavor insira sua raça denovo\n")
+        if Escolher_Raca == "AMONGUS":
+            print("Eu achei que alguem podia tentar isso, então sim, você achou um easter egg")
+            print("Mas infelizmente ele não acrescenta nada pro jogo, é so uma menssagem minha pra você mesmo")
+            print("Eu acho que o maior concorrente a fazer isso é o lucairo, mas não duvido de ninguem")
+        
+        else:
+            print("Nome de raça incoreto, porfavor insira sua raça denovo\n")
 
 
 
-# ------------------------------------------ Salvando Arquivos de cada jogador ///
+def Salvar_Personagem():
 
-# Lista com todos os atributos dos personagens
-Atributos = [Nome,Raca_c,Vigor,Vontade,Vitalidade,Percepcao,Reflexo,Zanites]
+    global Vigor
+    global Reflexo 
+    global Percepcao
+    global Vontade
+    global Vitalidade
+    global Atributos 
+    global Raca_c
+    global Nome
 
-# Variavel que abre o arquivo, com o nome e local onde deve ser escrito
-Save_Personagem = open(f"Personagens/{Nome}.pickle", 'wb')
+    # Lista com todos os atributos dos personagens
+    Atributos = [Nome,Raca_c,Vigor,Vontade,Vitalidade,Percepcao,Reflexo,Zanites]
 
-# Funcao da biblioteca pickle para salvar os arquivos " dump "
-pickle.dump(Atributos, Save_Personagem)
 
-# Fechar o arquivo para que ele seja salvo e nao receba alteracoes indesejadas 
-Save_Personagem.close()
+    # Variavel que abre o arquivo, com o nome e local onde deve ser escrito
+    Save_Personagem = open(f"Personagens/{Nome}.pickle", 'wb')
+
+    # Funcao da biblioteca pickle para salvar os arquivos " dump "
+    pickle.dump(Atributos, Save_Personagem)
+
+    # Fechar o arquivo para que ele seja salvo e nao receba alteracoes indesejadas 
+    Save_Personagem.close()
+
+
+
+# Inicia Criação do personagem e distribui os pontos primarios
+Criar_Personagem()
+
+# Seleciona raca
+Selecionar_Raca()
+
+# Salva opções escolhidas do usuario
+Salvar_Personagem()
+

@@ -16,6 +16,9 @@ def Alterar_Atributos():
             # Deifinir arquivos para leitura
             Ler_Arquivo = open(f'Personagens/{Nome_Do_Personagem}.pickle', 'rb')
             Ler_Atributos = pickle.load(Ler_Arquivo)
+            
+            # Definir arquivo onde vão ser salvos os novos atributos
+            Escrever_Arquivo = open(f'Personagens/{Nome_Do_Personagem}.pickle', 'wb')
 
             # Receber atributo que o jogador deseja alterar
             Atributo = input("Qual atributo você deseja alterar?")
@@ -23,10 +26,7 @@ def Alterar_Atributos():
             # try está sendo usado para não interromper o codigo caso de algum erro
             try:
                 if Atributo == "vigor" or Atributo == "Vigor" or  Atributo == "VIGOR":
-                    
-                    # Definir arquivo onde vão ser salvos os novos atributos
-                    Escrever_Arquivo = open(f'Personagens/{Nome_Do_Personagem}.pickle', 'wb')
-                    
+                
                     # Alterar atributos
                     A_vigor = int(input("Quantos pontos você deseja colocar?"))
                     Var_atr = A_vigor
@@ -41,10 +41,7 @@ def Alterar_Atributos():
 
 
                 if Atributo == "vontade" or Atributo == "Vontade" or  Atributo == "VONTADE":
-                    
-                    # Definir arquivo onde vão ser salvos os novos atributos
-                    Escrever_Arquivo = open(f'Personagens/{Nome_Do_Personagem}.pickle', 'wb')
-                    
+                
                     # Alterar atributos
                     A_Vontade = int(input("Quantos pontos você deseja colocar?"))
                     Var_atr = A_Vontade
@@ -58,10 +55,7 @@ def Alterar_Atributos():
                     Escrever_Arquivo.close()
 
                 if Atributo == "vitalidade" or Atributo == "Vitalidade" or  Atributo == "VITALIDADE":
-                    
-                    # Definir arquivo onde vão ser salvos os novos atributos
-                    Escrever_Arquivo = open(f'Personagens/{Nome_Do_Personagem}.pickle', 'wb')
-                    
+                
                     # Alterar atributos
                     A_Vitalidade = int(input("Quantos pontos você deseja colocar?"))
                     Var_atr = A_Vitalidade
@@ -75,10 +69,7 @@ def Alterar_Atributos():
                     Escrever_Arquivo.close()
 
                 if Atributo == "percepcao" or Atributo == "Percepcao" or  Atributo == "PERCEPCAO" or Atributo == "Percepção" or Atributo == "percepção":
-                    
-                    # Definir arquivo onde vão ser salvos os novos atributos
-                    Escrever_Arquivo = open(f'Personagens/{Nome_Do_Personagem}.pickle', 'wb')
-                    
+                
                     # Alterar atributos
                     A_Percepcao = int(input("Quantos pontos você deseja colocar?"))
                     Var_atr = A_Percepcao
@@ -92,10 +83,7 @@ def Alterar_Atributos():
                     Escrever_Arquivo.close()
 
                 if Atributo == "reflexo" or Atributo == "Reflexo" or  Atributo == "REFLEXO":
-                    
-                    # Definir arquivo onde vão ser salvos os novos atributos
-                    Escrever_Arquivo = open(f'Personagens/{Nome_Do_Personagem}.pickle', 'wb')
-                    
+                
                     # Alterar atributos
                     A_Reflexo = int(input("Quantos pontos você deseja colocar?"))
                     Var_atr = A_Reflexo
@@ -125,3 +113,5 @@ def Alterar_Atributos():
         # Mensagem caso o nome digitado seja invalido
         except:
             print("Nome incorreto, porfavor digite denovo")
+
+Alterar_Atributos()
